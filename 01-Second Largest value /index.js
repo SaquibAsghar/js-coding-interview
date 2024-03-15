@@ -19,17 +19,37 @@ function secondLargestVal(arr, cb) {
   cb(tempArr);
 }
 
-secondLargestVal(originalArr, (arr) => {
-  let largest = arr[0],
-    secondLargest = -Infinity;
+// secondLargestVal(originalArr, (arr) => {
+//   let largest = arr[0],
+//     secondLargest = -Infinity;
+//   for (let i = 1; i < arr.length; i++) {
+//     if (arr[i] > largest) {
+//       secondLargest = largest;
+//       largest = arr[i];
+//     } else if (arr[i] < largest && arr[i] > secondLargest) {
+//       secondLargest = arr[i];
+//     }
+//   }
+//   console.log({ secondLargest, largest });
+//   return secondLargest;
+// });
+
+
+// alternative implementation without sorting
+function secondLargestVal(arr) {
+  let largestVal = arr[0];
+  let smallestVal = -Infinity;
+
   for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > largest) {
-      secondLargest = largest;
-      largest = arr[i];
-    } else if (arr[i] < largest && arr[i] > secondLargest) {
-      secondLargest = arr[i];
+    if (arr[i] > largestVal) {
+      smallestVal = largestVal;
+      largestVal = arr[i];
+    } else if (smallestVal < arr[i] && arr[i] < largestVal) {
+      smallestVal = arr[i];
     }
   }
-  console.log({ secondLargest, largest });
-  return secondLargest;
-});
+  console.log({ smallestVal, largestVal });
+  return smallestVal;
+}
+
+// anotherFunc(originalArr);
