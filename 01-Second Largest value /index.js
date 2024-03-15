@@ -34,22 +34,22 @@ function secondLargestVal(arr, cb) {
 //   return secondLargest;
 // });
 
-
-// alternative implementation without sorting
+/*
+    alternative implementation without sorting
+*/
 function secondLargestVal(arr) {
   let largestVal = arr[0];
-  let smallestVal = -Infinity;
+  let secondSmallestVal = -Infinity;
 
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] > largestVal) {
-      smallestVal = largestVal;
+      secondSmallestVal = largestVal;
       largestVal = arr[i];
-    } else if (smallestVal < arr[i] && arr[i] < largestVal) {
-      smallestVal = arr[i];
+    } else if (secondSmallestVal < arr[i] && arr[i] < largestVal) {
+      secondSmallestVal = arr[i];
     }
   }
-  console.log({ smallestVal, largestVal });
-  return smallestVal;
+  return {secondSmallestVal};
 }
 
-// anotherFunc(originalArr);
+console.log(secondLargestVal(originalArr));
